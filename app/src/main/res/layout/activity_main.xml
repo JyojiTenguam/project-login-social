@@ -43,6 +43,27 @@
                 android:hint="Email"
                 android:inputType="text|textEmailAddress"
                 android:visibility="visible" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:endIconMode="password_toggle"
+            app:hintEnabled="true"
+            app:startIconDrawable="@drawable/password_icon_24dp"
+            tools:endIconDrawable="@drawable/visibility_icon_24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:visibility="visible" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
