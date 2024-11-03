@@ -5,14 +5,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var emailInputLayout: TextInputLayout
-    private lateinit var passwordTextInputLayout: TextInputLayout
+    private lateinit var passwordInputLayout: TextInputLayout
     private lateinit var emailInput: EditText
     private lateinit var passwordInput: EditText
     private lateinit var loginButton: Button
@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        emailInputLayout = findViewById(R.id.email_text_input_layout)
+        passwordInputLayout = findViewById(R.id.password_text_input_layout)
         emailInput = findViewById(R.id.email_input)
         passwordInput = findViewById(R.id.password_input)
         loginButton = findViewById(R.id.login_button)
-        emailInputLayout = findViewById(R.id.email_text_input_layout)
-        passwordTextInputLayout = findViewById(R.id.password_text_input_layout)
 
         loginButton.isEnabled = false
 
@@ -36,19 +36,21 @@ class MainActivity : AppCompatActivity() {
             val email = emailInput.text.toString()
             val password = passwordInput.text.toString()
 
-            // Valida o email
-            if (isValidEmail(email)) {
-                emailInputLayout.error = null // Limpa qualquer erro anterior
-
-                // Valida a senha
-                if (password.length > 4) {
-                    passwordTextInputLayout.error = null // Limpa qualquer erro anterior
-                    Toast.makeText(this, "Login realizado com sucesso", Toast.LENGTH_SHORT).show()
-                } else {
-                    passwordTextInputLayout.error = "Senha deve ter mais de 4 caracteres"
-                }
+            if (isValidEmail(email) && isValidPassword(password)) {
+                emailInputLayout.error = null
+                passwordInputLayout.error = null
+                Snackbar.make(
+                    findViewById(R.id.main),
+                    "Login efetuado com sucesso",
+                    Snackbar.LENGTH_SHORT
+                ).show()
             } else {
-                emailInputLayout.error = "Email inválido"
+                if (!isValidEmail(email)) {
+                    emailInputLayout.error = "Email inválido"
+                }
+                if (!isValidPassword(password)) {
+                    passwordInputLayout.error = "Senha deve ter mais de 4 caracteres"
+                }
             }
         }
     }
@@ -66,7 +68,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isValidEmail(email: String): Boolean {
-        val emailPattern = "[a-zA-Z0-9.]+@[a-zA-Z]+\\.[a-zA-Z]+"
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         return email.matches(emailPattern.toRegex())
+    }
+
+    private fun isValidPassword(password: String): Boolean {
+        return password.length > 4
     }
 }
