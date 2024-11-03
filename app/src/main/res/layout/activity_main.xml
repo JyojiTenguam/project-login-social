@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="12dp"
+    android:background="#FDF9FC"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-78dp">
 
@@ -74,6 +75,16 @@
             android:layout_height="wrap_content"
             android:enabled="false"
             android:text="Entrar" />
+
+        <Button
+            android:id="@+id/forgot_password_button"
+            style="@style/ThemeOverlay.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FBF7FA"
+            android:enabled="true"
+            android:text="Esqueceu a senha?"
+            android:textColor="#1EB620" />
 
     </LinearLayout>
 
