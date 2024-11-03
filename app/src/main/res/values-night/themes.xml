@@ -1,7 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme for dark mode. -->
     <style name="Base.Theme.SocialLogin" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">#1EB620</item> <!-- Cor principal da aplicação -->
+        <item name="android:statusBarColor">#1EB620</item> <!-- Cor da status bar -->
     </style>
 </resources>
