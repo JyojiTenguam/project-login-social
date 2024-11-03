@@ -8,9 +8,9 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
